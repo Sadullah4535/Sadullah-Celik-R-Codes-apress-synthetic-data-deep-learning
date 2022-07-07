@@ -1,5 +1,5 @@
 # R-Codes-
-# Read the dataset 
+# Read the glass dataset 
 > glass = read.csv("C:/Users/Esma/Desktop/sadullah kitap R kodu/glass.csv")
 # Generate an ID number for each column in the dataset 
 >glass$id = as.character(seq(1, nrow(glass)))
