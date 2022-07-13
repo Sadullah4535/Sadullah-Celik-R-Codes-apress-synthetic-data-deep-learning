@@ -1,12 +1,12 @@
 # Read dataset
-glass <- read_excel("C:/Users/ÇELİK/OneDrive/Masaüstü/Kitap Düğzeltme/glass.xls")
+glass <- read_excel("C:/Users/........./glass.xls")
 # Generate an ID number for each column in the dataset 
 glass$id = as.character(seq(1, nrow(glass)))
 head(glass)
 glass.label = mutate( glass, label1 = Type.of.glass== '1', label2 =Type.of.glass== '2', label3 = Type.of.glass== '3', label4 =Type.of.glass== '4',label5 = Type.of.glass== '5', label6 =Type.of.glass== '6',label7 = Type.of.glass== '7',Type.of.glass = factor(Type.of.glass) )
 sapply(glass.label, class)
 feature.names = colnames(glass)[!(colnames(glass) %in% c('id','Id.number' ,'Type.of.glass', 'label1', 'label2','label3', 'label4','label5', 'label6','label7'))]
-# Test whether each variable in the dataset “glass.label” is a numeric value.  
+# Test whether each variable in the dataset â€œglass.labelâ€ is a numeric value.  
 numeric = sapply(glass.label, is.numeric)
 numeric
 glass.scaled = glass.label
@@ -14,7 +14,7 @@ glass.scaled = glass.label
 glass.scaled[ ,numeric]= sapply(glass.label[,numeric], scale)
 # Print the first six lines of the scaled dataset. 
 head(glass.scaled)
-# Generate a training dataset by randomly selecting 60 samples in the “id" variable  
+# Generate a training dataset by randomly selecting 60 samples in the â€œid" variable  
 train.sample = sample(glass$id,60)
 # Create a test sample based on the training sample
 test.sample = glass$id[!(glass$id %in% train.sample)]
@@ -28,7 +28,7 @@ glass.test = glass.scaled[test.sample, ]
 nnet.formula = as.formula(paste('Type.of.glass~', paste(feature.names, collapse = ' + ')))
 # Print the generated regression model  
 print(nnet.formula)
-# Upload the “nnet” and “neuralnet” libraries to the existing R session to train neural networks.
+# Upload the â€œnnetâ€ and â€œneuralnetâ€ libraries to the existing R session to train neural networks.
 library(nnet)
 library(neuralnet)
 nnet.model = nnet(nnet.formula, data = glass.train, size =5)
