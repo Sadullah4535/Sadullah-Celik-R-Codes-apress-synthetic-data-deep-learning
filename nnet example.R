@@ -1,4 +1,5 @@
 # Read dataset
+library(readxl)
 glass <- read_excel("C:/Users/........./glass.xls")
 # Generate an ID number for each column in the dataset 
 glass$id = as.character(seq(1, nrow(glass)))
